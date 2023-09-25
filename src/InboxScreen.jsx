@@ -1,23 +1,26 @@
-import PropTypes from "prop-types";
-import TaskList from "./components/TaskList";
-import { useTasks } from "./useTasks";
+import PropTypes from 'prop-types';
+import TaskList from './components/TaskList';
+import { useTasks } from './useTasks';
 
 export default function InboxScreen({ error }) {
   const [tasks, dispatch] = useTasks();
 
   const archiveTask = (archive, id) => {
-    dispatch({ type: archive ? "ARCHIVE_TASK" : "INBOX_TASK", id });
+    dispatch({ type: archive ? 'ARCHIVE_TASK' : 'INBOX_TASK', id });
+  };
+  const deleteTask = (id) => {
+    dispatch({ type: 'DELETE_TASK', id });
   };
 
   const togglePinTask = (state, id) => {
     dispatch({
-      type: state === "TASK_PINNED" ? "INBOX_TASK" : "PIN_TASK",
+      type: state === 'TASK_PINNED' ? 'INBOX_TASK' : 'PIN_TASK',
       id,
     });
   };
 
   const editTitle = (title, id) => {
-    dispatch({ type: "EDIT_TITLE", id, title });
+    dispatch({ type: 'EDIT_TITLE', id, title });
   };
 
   if (error) {
@@ -41,6 +44,7 @@ export default function InboxScreen({ error }) {
         onArchiveTask={archiveTask}
         onTogglePinTask={togglePinTask}
         onEditTitle={editTitle}
+        onDeleteTask={deleteTask}
       />
     </div>
   );
@@ -50,5 +54,5 @@ InboxScreen.propTypes = {
 };
 
 InboxScreen.defaultProps = {
-  error: "",
+  error: '',
 };
