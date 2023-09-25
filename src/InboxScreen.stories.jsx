@@ -87,7 +87,7 @@ export const EditTask = {
 
     const itemToEdit = await getTask('task-5');
     const taskInput = await findByRole(itemToEdit, 'textbox');
-    await userEvent.type(taskInput, ' and disabled statee');
+    await userEvent.type(taskInput, ' and disabled state');
     await expect(taskInput.value).toBe(
       'Fix bug in input error state and disabled state'
     );
