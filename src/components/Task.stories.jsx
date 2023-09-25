@@ -91,3 +91,18 @@ export const ShortTitle = {
     },
   },
 };
+
+export const TestTitle = {
+  render: (args) => (
+    <ul>
+      <Task {...args} />
+    </ul>
+  ),
+  args: {
+    task: {
+      id: '5',
+      title: 'test',
+      state: 'TASK_INBOX',
+    },
+  },
+};
